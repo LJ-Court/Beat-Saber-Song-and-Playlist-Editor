@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BSSPE (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "BSSPE (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

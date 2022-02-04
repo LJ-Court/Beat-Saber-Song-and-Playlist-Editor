@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="BSSPE.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BSSPE"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="0" Padding="30, 0" Style="{StaticResource DisplayTextBlockStyle}" Text="Settings Page" Grid.Row="0" Grid.Column="0"></TextBlock>
+
+        <TextBlock Padding="30, 50, 0, 0" Margin="0" Style="{StaticResource TitleTextBlockStyle}" Text="Select Beat Saber Directory" Grid.Row="1" Grid.Column="0"></TextBlock>
+
+        <Button Grid.Row="3" Content="Select Install Directory" Click="Button_Click"/>
+
+    </Grid>
+</Page>

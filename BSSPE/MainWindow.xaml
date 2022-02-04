@@ -1,0 +1,27 @@
+﻿<Window
+    x:Class="BSSPE.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BSSPE"
+    x:Name="mainWindow"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    
+    
+    <NavigationView x:Name="nvSample" Loaded="nvSample_Loaded" ItemInvoked="nvSample_ItemInvoked"
+    SelectionFollowsFocus="Enabled" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" IsBackButtonVisible="Collapsed">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Icon="Play" Content="Songs" x:Name="SongPage" Tag="songPage" />
+            <NavigationViewItem Icon="Library" Content="Change Install Directory" Tag="changeInstallDirectory"  x:Name="SamplePage2Item" />
+        </NavigationView.MenuItems>
+        <Frame x:Name="contentFrame"/>
+        
+        
+        
+    </NavigationView>
+    
+    
+
+</Window>

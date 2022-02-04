@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="BSSPE.SongsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BSSPE"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+
+    <NavigationView x:Name="songList" ItemInvoked="songList_ItemInvoked">
+        <NavigationView.MenuItems>
+            
+        </NavigationView.MenuItems>
+        <Grid Width="Auto" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" x:Name="canvas">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <CommandBar HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Refresh" Label="Refresh Songs" Click="AppBarButton_Click"/>
+                <AppBarButton Icon="Add" Label="Add"/>
+                <AppBarButton Icon="Edit" Label="Edit"/>
+                <AppBarButton Icon="Share" Label="Share"/>
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Icon="Setting" Label="Settings">
+                        <AppBarButton.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="I" />
+                        </AppBarButton.KeyboardAccelerators>
+                    </AppBarButton>
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+            <TextBlock TextWrapping="Wrap" Width="600" HorizontalAlignment="Left" Padding="15" Grid.Column="0" Grid.Row="1" x:Name="songName" Style="{StaticResource HeaderTextBlockStyle}" Text="Select a song from the left to see it's details displayed here"></TextBlock>
+            <!--<Image x:Name="coverImage" Margin="500, 0" Grid.Row="2" HorizontalAlignment="Right" Height="150" Width="150" Source=""></Image>-->
+            <RichTextBlock VerticalAlignment="Top" Padding="15, 50" Grid.Column="0" Grid.Row="2" FontStyle="Normal" MinHeight="50">
+                <Paragraph>
+                    <Run x:Name="songAuthor"></Run>
+                </Paragraph>
+                <Paragraph Margin="0, 10">
+                    <Run x:Name="levelAuthor"></Run>
+                </Paragraph>
+                <Paragraph Margin="0, 10">
+                    <Run x:Name="beatsPerMinute"></Run>
+                </Paragraph>
+                <Paragraph Margin="0, 10">
+                    <Run x:Name="environmentName"></Run>
+                </Paragraph>
+            </RichTextBlock>
+        </Grid>
+    </NavigationView>
+    
+    
+</Page>
