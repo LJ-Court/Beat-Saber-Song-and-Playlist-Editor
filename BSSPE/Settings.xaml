@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -20,7 +20,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -28,7 +28,9 @@
 
         <TextBlock Padding="30, 50, 0, 0" Margin="0" Style="{StaticResource TitleTextBlockStyle}" Text="Select Beat Saber Directory" Grid.Row="1" Grid.Column="0"></TextBlock>
 
-        <Button Grid.Row="3" Content="Select Install Directory" Click="Button_Click"/>
+        <TextBlock Width="auto" Padding="15, 30, 0, 0" Grid.Row="3" Grid.Column="0" Text="" x:Name="installDirView"/>
+
+        <Button Margin="0, 30" Grid.Row="3" Grid.Column="1" Content="Select Install Directory" Click="Button_Click"/>
 
     </Grid>
 </Page>

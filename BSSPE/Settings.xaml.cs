@@ -30,6 +30,7 @@ namespace BSSPE
         public Settings()
         {
             this.InitializeComponent();
+            installDirView.Text = Properties.appSettings.Default.installDir;
             
         }
 
@@ -66,6 +67,7 @@ namespace BSSPE
             if (folder.Path != null)
             {
                 Classes.Utils.setDir(folder.Path);
+                installDirView.Text = Properties.appSettings.Default.installDir;
             }
             else
             {

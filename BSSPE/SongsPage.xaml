@@ -10,7 +10,7 @@
 
 
 
-    <NavigationView x:Name="songList" ItemInvoked="songList_ItemInvoked">
+    <NavigationView x:Name="songList" IsSettingsVisible="False" ItemInvoked="songList_ItemInvoked">
         <NavigationView.MenuItems>
             
         </NavigationView.MenuItems>
@@ -27,16 +27,22 @@
             </Grid.RowDefinitions>
             <CommandBar HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
                 <AppBarButton Icon="Refresh" Label="Refresh Songs" Click="AppBarButton_Click"/>
-                <AppBarButton Icon="Add" Label="Add"/>
+                
+                <!-- Commented out as currently unimplemented-->
+                
+                <!--<AppBarButton Icon="Add" Label="Add"/>
                 <AppBarButton Icon="Edit" Label="Edit"/>
-                <AppBarButton Icon="Share" Label="Share"/>
-                <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Share" Label="Share"/>-->
+                <!--<CommandBar.SecondaryCommands>
                     <AppBarButton Icon="Setting" Label="Settings">
                         <AppBarButton.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="I" />
                         </AppBarButton.KeyboardAccelerators>
-                    </AppBarButton>
-                </CommandBar.SecondaryCommands>
+                    </AppBarButton>-->
+                <!--</CommandBar.SecondaryCommands>-->
+                
+                <!--End of items commented out due to them being unimplemented-->
+                
             </CommandBar>
             <TextBlock TextWrapping="Wrap" Width="600" HorizontalAlignment="Left" Padding="15" Grid.Column="0" Grid.Row="1" x:Name="songName" Style="{StaticResource HeaderTextBlockStyle}" Text="Select a song from the left to see it's details displayed here"></TextBlock>
             <!--<Image x:Name="coverImage" Margin="500, 0" Grid.Row="2" HorizontalAlignment="Right" Height="150" Width="150" Source=""></Image>-->

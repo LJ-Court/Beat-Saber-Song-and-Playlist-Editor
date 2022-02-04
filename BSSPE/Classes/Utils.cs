@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Windows.Storage.Pickers;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -79,6 +80,28 @@ namespace BSSPE.Classes
             return null;
         }
 
+        public async void pickDir()
+        {
+            FolderPicker folderPicker = new FolderPicker();
+
+            var hwnd = WinUIEx.HwndExtensions.GetActiveWindow();
+
+            // Associate the HWND with the file picker
+            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hwnd);
+
+            folderPicker.FileTypeFilter.Add("*");
+
+            var folder = await folderPicker.PickSingleFolderAsync();
+            if (folder.Path != null)
+            {
+                setDir(folder.Path);
+            }
+            else
+            {
+                Properties.appSettings.Default.installDir = "";
+            }
+        }
+
         public async void checkDir(string baseDir)
         {
             if (!Directory.Exists(baseDir) && !Directory.Exists(baseDir + "\\Beat Saber_Data\\CustomLevels"))
@@ -88,12 +111,7 @@ namespace BSSPE.Classes
             }
             else
             {
-                ContentDialog incorrectFilePath = new ContentDialog();
-                incorrectFilePath.Title = "Incorrect File Path Selected";
-                incorrectFilePath.PrimaryButtonText = "The folder you have selected does not contain a beat saber installation, do you want to select a different folder or do an automatic search";
-
-                ContentDialogResult result = await incorrectFilePath.ShowAsync();
-
+                
             }
 
             Properties.appSettings.Default.Save();
