@@ -57,8 +57,6 @@ namespace BSSPE
                 SongProperties info = JsonConvert.DeserializeObject<SongProperties>((string)json);
                 // songListText.Text += info._songName + "\n";
 
-                
-
                 // create menu item for song
                 NavigationViewItem navigationViewItem = new NavigationViewItem();
                 navigationViewItem.Tag = dir;
