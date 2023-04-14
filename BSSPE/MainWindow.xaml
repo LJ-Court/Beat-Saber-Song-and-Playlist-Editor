@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    
-    
-    <NavigationView x:Name="nvSample" Loaded="nvSample_Loaded" ItemInvoked="nvSample_ItemInvoked"
+
+
+    <NavigationView  PaneDisplayMode="Top" x:Name="nvSample" Loaded="nvSample_Loaded" ItemInvoked="nvSample_ItemInvoked"
     SelectionFollowsFocus="Enabled" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" IsBackButtonVisible="Collapsed">
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="Play" Content="Songs" x:Name="SongPage" Tag="songPage" />

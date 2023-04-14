@@ -15,8 +15,17 @@ namespace BSSPE.Classes
 
         public static void setDir(string installDir)
         {
-            Properties.appSettings.Default.installDir = installDir;
-            Properties.appSettings.Default.Save();
+            
+            try
+            {
+                Properties.appSettings.Default.installDir = installDir;
+                Properties.appSettings.Default.Save();
+            }
+            catch (Exception)
+            {
+
+                ;
+            }
         }
         
         
@@ -98,6 +107,7 @@ namespace BSSPE.Classes
 
             Properties.appSettings.Default.Save();
         }
+        //////////////////////////////////////////////////////////////////////////////////////
 
     }
 }

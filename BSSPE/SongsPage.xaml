@@ -10,10 +10,12 @@
 
 
 
-    <NavigationView x:Name="songList" ItemInvoked="songList_ItemInvoked">
+    <NavigationView x:Name="songList" ItemInvoked="songList_ItemInvoked" IsSettingsVisible="False">
         <NavigationView.MenuItems>
             
         </NavigationView.MenuItems>
+        <NavigationView.FooterMenuItems>
+        </NavigationView.FooterMenuItems>
         <Grid Width="Auto" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" x:Name="canvas">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>

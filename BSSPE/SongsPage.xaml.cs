@@ -24,7 +24,7 @@ using Windows.Foundation.Collections;
 namespace BSSPE
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// This page is used to display information relating to each song
     /// </summary>
     public sealed partial class SongsPage : Page
     {
@@ -50,26 +50,34 @@ namespace BSSPE
             //songListText.Text = "";
             string songName = "";
             var dirs = Directory.GetDirectories(Properties.appSettings.Default.installDir + "\\Beat Saber_Data\\CustomLevels");
-            foreach (string dir in dirs)
+            if (dirs == null)
             {
-                // read info file
-                var json = File.ReadAllText(dir + "\\info.dat");
-                SongProperties info = JsonConvert.DeserializeObject<SongProperties>((string)json);
-                // songListText.Text += info._songName + "\n";
+                ;
+            }
+            else
+            {
+                foreach (string dir in dirs)
+                {
+                    // read info file
+                    var json = File.ReadAllText(dir + "\\info.dat");
+                    SongProperties info = JsonConvert.DeserializeObject<SongProperties>((string)json);
+                    // songListText.Text += info._songName + "\n";
 
-                // create menu item for song
-                NavigationViewItem navigationViewItem = new NavigationViewItem();
-                navigationViewItem.Tag = dir;
-                navigationViewItem.Name = info._songName;
-                navigationViewItem.Content = info._songName;
+                    // create menu item for song
+                    NavigationViewItem navigationViewItem = new NavigationViewItem();
+                    navigationViewItem.Tag = dir;
+                    navigationViewItem.Name = info._songName;
+                    navigationViewItem.Content = info._songName;
                 
-                // add info._songName to songList
-                songName = info._songName.ToString();
-                songsList.Append(songName);
+                    // add info._songName to songList
+                    songName = info._songName.ToString();
+                    songsList.Append(songName);
 
-                songList.MenuItems.Add(navigationViewItem);
+                    songList.MenuItems.Add(navigationViewItem);
 
-            }    
+                }
+            }
+                
         }
 
         private void songList_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)

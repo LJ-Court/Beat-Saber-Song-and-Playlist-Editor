@@ -9,7 +9,7 @@
   <Identity
     Name="2e608d66-190b-4d87-9dea-6837b7616779"
     Publisher="CN=luke1"
-    Version="1.0.0.0" />
+    Version="0.0.1.0" />
 
   <Properties>
     <DisplayName>beat Saber Song and Playlist Editor</DisplayName>

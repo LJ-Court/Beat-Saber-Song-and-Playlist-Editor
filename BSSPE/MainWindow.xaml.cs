@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Diagnostics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -67,10 +68,19 @@ namespace BSSPE
             folderPicker.FileTypeFilter.Add("*");
 
             var folder = await folderPicker.PickSingleFolderAsync();
-            if (folder.Path != null)
+            if (folder != null)
             {
-                Properties.appSettings.Default.installDir = folder.Path;
+                if (folder.Path != null)
+                {
+                    Debug.WriteLine(folder.Path);
+                    Properties.appSettings.Default.installDir = folder.Path;
+                }
+                else
+                {
+                    ;
+                }
             }
+            
         }
 
         private void NavView_Navigate(NavigationViewItem item)
