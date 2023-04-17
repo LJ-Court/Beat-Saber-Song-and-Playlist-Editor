@@ -17,6 +17,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Diagnostics;
+using Windows.Storage.Pickers;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -43,41 +45,85 @@ namespace BSSPE
             generateSong();
         }
 
+        public async void selectDirectory()
+        {
+
+            FolderPicker folderPicker = new FolderPicker();
+
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+
+            // Associate the HWND with the file picker
+            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hwnd);
+
+            folderPicker.FileTypeFilter.Add("*");
+
+            var folder = await folderPicker.PickSingleFolderAsync();
+            if (folder != null)
+            {
+                if (folder.Path != null)
+                {
+                    Debug.WriteLine(folder.Path);
+                    Properties.appSettings.Default.installDir = folder.Path;
+                }
+                else
+                {
+                    ;
+                }
+            }
+
+        }
+
         private void generateSong()
         {
-            songsList = new List<string>();
-            songList.MenuItems.Clear();
-            //songListText.Text = "";
-            string songName = "";
-            var dirs = Directory.GetDirectories(Properties.appSettings.Default.installDir + "\\Beat Saber_Data\\CustomLevels");
-            if (dirs == null)
+            if (Properties.appSettings.Default.installDir == "")
             {
-                ;
+                ContentDialog dialog = new ContentDialog();
+
+                // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+                dialog.XamlRoot = this.XamlRoot;
+                dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+                dialog.Title = "No Beat Saber Folder found";
+                dialog.PrimaryButtonText = "Select Folder";
+                dialog.CloseButtonText = "Quit";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                dialog.PrimaryButtonClick += (d, e) => selectDirectory();
             }
             else
             {
-                foreach (string dir in dirs)
+                songsList = new List<string>();
+                songList.MenuItems.Clear();
+                //songListText.Text = "";
+                string songName = "";
+                var dirs = Directory.GetDirectories(Properties.appSettings.Default.installDir + "\\Beat Saber_Data\\CustomLevels");
+                if (dirs == null)
                 {
-                    // read info file
-                    var json = File.ReadAllText(dir + "\\info.dat");
-                    SongProperties info = JsonConvert.DeserializeObject<SongProperties>((string)json);
-                    // songListText.Text += info._songName + "\n";
-
-                    // create menu item for song
-                    NavigationViewItem navigationViewItem = new NavigationViewItem();
-                    navigationViewItem.Tag = dir;
-                    navigationViewItem.Name = info._songName;
-                    navigationViewItem.Content = info._songName;
-                
-                    // add info._songName to songList
-                    songName = info._songName.ToString();
-                    songsList.Append(songName);
-
-                    songList.MenuItems.Add(navigationViewItem);
-
+                    ;
                 }
-            }
-                
+                else
+                {
+                    foreach (string dir in dirs)
+                    {
+                        // read info file
+                        var json = File.ReadAllText(dir + "\\info.dat");
+                        SongProperties info = JsonConvert.DeserializeObject<SongProperties>((string)json);
+                        // songListText.Text += info._songName + "\n";
+
+                        // create menu item for song
+                        NavigationViewItem navigationViewItem = new NavigationViewItem();
+                        navigationViewItem.Tag = dir;
+                        navigationViewItem.Name = info._songName;
+                        navigationViewItem.Content = info._songName;
+
+                        // add info._songName to songList
+                        songName = info._songName.ToString();
+                        songsList.Append(songName);
+
+                        songList.MenuItems.Add(navigationViewItem);
+
+                    }
+                }
+            }    
         }
 
         private void songList_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
