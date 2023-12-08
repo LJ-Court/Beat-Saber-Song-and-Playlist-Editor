@@ -143,13 +143,11 @@ namespace BSSPE
         private void createFrame(string dir, SongProperties info)
         {
             songName.Text = info._songName;
-            //var imageDir = (dir + "\\" + info._coverImageFilename).ToString();
-            //BitmapImage bitmapImage = new BitmapImage(new Uri(imageDir));
-            //coverImage.Source = bitmapImage;
             songAuthor.Text = "Song Author: " + info._songAuthorName;
             levelAuthor.Text = "Level Author: " + info._levelAuthorName;
             beatsPerMinute.Text = "Beats Per Minute: " + info._beatsPerMinute.ToString();
             environmentName.Text = "Environment Name: " + info._environmentName;
+            levelImage.Source = new BitmapImage(new Uri(dir + "\\" + info._coverImageFilename));
         }
     }
 }

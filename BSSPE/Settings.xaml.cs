@@ -16,6 +16,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using System.Diagnostics;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -33,24 +35,6 @@ namespace BSSPE
             
         }
 
-        public async void getDirectory()
-        {
-            FolderPicker folderPicker = new FolderPicker();
-
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-
-            // Associate the HWND with the file picker
-            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, hwnd);
-
-            folderPicker.FileTypeFilter.Add("*");
-
-            var folder = await folderPicker.PickSingleFolderAsync();
-            if (folder.Path != null)
-            {
-                Properties.appSettings.Default.installDir = folder.Path;
-            }
-        }
-
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             FolderPicker folderPicker = new FolderPicker();
@@ -62,15 +46,21 @@ namespace BSSPE
 
             folderPicker.FileTypeFilter.Add("*");
 
-            var folder = await folderPicker.PickSingleFolderAsync();
-            if (folder.Path != null)
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+
+            if (folder != null)
             {
-                Classes.Utils.setDir(folder.Path);
+                if (folder.Path != null)
+                {
+                    Debug.WriteLine(folder.Path);
+                    Properties.appSettings.Default.installDir = folder.Path;
+                }
+                else
+                {
+                    ;
+                }
             }
-            else
-            {
-                Properties.appSettings.Default.installDir = "";
-            }
+
         }
     }
 }

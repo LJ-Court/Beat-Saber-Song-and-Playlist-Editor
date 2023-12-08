@@ -24,11 +24,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Margin="0" Padding="30, 0" Style="{StaticResource DisplayTextBlockStyle}" Text="Settings Page" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Margin="0" Padding="30, 10" Style="{StaticResource DisplayTextBlockStyle}" Text="Settings" Grid.Row="0" Grid.Column="0"></TextBlock>
 
         <TextBlock Padding="30, 50, 0, 0" Margin="0" Style="{StaticResource TitleTextBlockStyle}" Text="Select Beat Saber Directory" Grid.Row="1" Grid.Column="0"></TextBlock>
 
-        <Button Grid.Row="3" Content="Select Install Directory" Click="Button_Click"/>
+        <Button Margin="30, 20" Grid.Row="2" Content="Select Install Directory" Click="Button_Click"/>
 
     </Grid>
 </Page>

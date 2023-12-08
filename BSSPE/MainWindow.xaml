@@ -10,11 +10,11 @@
 
 
 
-    <NavigationView  PaneDisplayMode="Top" x:Name="nvSample" Loaded="nvSample_Loaded" ItemInvoked="nvSample_ItemInvoked"
+    <NavigationView  PaneDisplayMode="LeftCompact" x:Name="nvSample" Loaded="nvSample_Loaded" ItemInvoked="nvSample_ItemInvoked"
     SelectionFollowsFocus="Enabled" Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}" IsBackButtonVisible="Collapsed">
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="Play" Content="Songs" x:Name="SongPage" Tag="songPage" />
-            <NavigationViewItem Icon="Library" Content="Change Install Directory" Tag="changeInstallDirectory"  x:Name="SamplePage2Item" />
+            <NavigationViewItem Icon="Library" Content="Playlists" Tag="playlistPage"  x:Name="playListPage" />
         </NavigationView.MenuItems>
         <Frame x:Name="contentFrame"/>
         
