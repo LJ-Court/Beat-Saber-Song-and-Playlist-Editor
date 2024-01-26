@@ -11,6 +11,11 @@
 
 
     <NavigationView x:Name="songList" ItemInvoked="songList_ItemInvoked" IsSettingsVisible="False">
+        <NavigationView.Transitions>
+            <TransitionCollection>
+                <AddDeleteThemeTransition />
+            </TransitionCollection>
+        </NavigationView.Transitions>
         <NavigationView.MenuItems>
             
         </NavigationView.MenuItems>
@@ -27,6 +32,9 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
+            <CommandBar>
+                <AppBarButton Click="addSong" Content="Add Song"></AppBarButton>
+            </CommandBar>
             <TextBlock TextWrapping="Wrap" Width="600" HorizontalAlignment="Left" Padding="15" Grid.Column="0" Grid.Row="1" x:Name="songName" Style="{StaticResource HeaderTextBlockStyle}" Text="Select a song from the left to see it's details displayed here"></TextBlock>
             <!--<Image x:Name="coverImage" Margin="500, 0" Grid.Row="2" HorizontalAlignment="Right" Height="150" Width="150" Source=""></Image>-->
             <RichTextBlock VerticalAlignment="Top" Padding="15, 50" Grid.Column="0" Grid.Row="2" FontStyle="Normal" MinHeight="50">

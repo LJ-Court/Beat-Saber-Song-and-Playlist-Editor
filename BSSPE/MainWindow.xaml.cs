@@ -35,6 +35,8 @@ namespace BSSPE
             this.InitializeComponent();
             Classes.Utils.GetSteamDir();
 
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(AppTitleBar);
 
             this.Title = "Beat Saber Song and Playlist Manager";
             contentFrame.Navigate(typeof(SongsPage));

@@ -27,9 +27,10 @@ namespace BSSPE.Classes
                 ;
             }
         }
-        
-        
+
+
         // This code gets the Steam Directory that's in use, code originally developed by ModAssistant Developers and being used under the MIT license
+        // Original Source can be found here: https://github.com/Assistant/ModAssistant
         public static string GetSteamDir()
         {
 
